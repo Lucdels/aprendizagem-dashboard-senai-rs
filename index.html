@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SENAI RS | Dashboard Market Share CAGED — Q2 2026</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+*{font-family:'Inter',sans-serif}
+.badge{display:inline-block;padding:2px 10px;border-radius:20px;font-size:11px;font-weight:700;text-transform:uppercase}
+.b-green{background:#D4EDDA;color:#155724}.b-blue{background:#D1ECF1;color:#0C5460}
+.b-amber{background:#FFF3CD;color:#856404}.b-red{background:#F8D7DA;color:#721C24}
+th{cursor:pointer}.th-sort::after{content:' \2195';font-size:9px;opacity:.5}
+.prog-bar{height:6px;border-radius:3px;background:#E2E8F0;overflow:hidden;margin-top:4px}
+.prog-fill{height:100%;border-radius:3px;transition:width .6s ease}
+.dcard{border-radius:10px;padding:1rem 1.25rem;margin-bottom:.75rem}
+.dcard-green{background:#F0FDF4;border-left:4px solid #00A859}
+.dcard-blue{background:#EFF6FF;border-left:4px solid #2E5A88}
+.dcard-amber{background:#FFFBEB;border-left:4px solid #F39C12}
+.dcard-red{background:#FEF2F2;border-left:4px solid #E63946}
+.mini{display:flex;flex-direction:column;align-items:center;padding:.75rem;border-radius:8px;background:#fff;border:1px solid #E2E8F0}
+.mini-v{font-size:1.4rem;font-weight:800}.mini-l{font-size:.65rem;font-weight:600;text-transform:uppercase;color:#6C757D;margin-top:.15rem}
+</style>
+</head>
+<body class="bg-gray-100 text-gray-800">
+<header class="bg-[#1B2956] text-white px-6 py-4 shadow-lg sticky top-0 z-50">
+<div class="max-w-[1600px] mx-auto flex items-center justify-between flex-wrap gap-3">
+<div class="flex items-center gap-4">
+<img src="Logotipo_-_SENAI_-_Completo.png" alt="SENAI" id="logoImg" style="height:42px;mix-blend-mode:screen" onerror="this.style.display='none'">
+<div><h1 class="text-lg font-bold">SENAI RS | Market Share CAGED</h1><p class="text-xs text-blue-200">Aprendizagem Industrial — 2º Trimestre 2026 — Confidencial</p></div>
+</div>
+<div class="flex items-center gap-6 text-sm">
+<div class="text-right"><p class="text-blue-200 text-xs">MS Atual</p><p class="text-2xl font-black text-green-400">67,83%</p><div class="prog-bar" style="width:80px"><div class="prog-fill" style="width:84.8%;background:#00A859"></div></div></div>
+<div class="w-px h-10 bg-blue-700"></div>
+<div class="text-right"><p class="text-blue-200 text-xs">Meta</p><p class="text-2xl font-black">80%</p></div>
+<div class="w-px h-10 bg-blue-700"></div>
+<div class="text-right"><p class="text-blue-200 text-xs">Gap</p><p class="text-2xl font-black text-orange-400">12,17 p.p.</p></div>
+</div>
+</div>
+</header>
+<main class="max-w-[1600px] mx-auto px-6 py-6 space-y-6">
+<section class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
+<div class="bg-white rounded-xl p-5 shadow border-l-4 border-[#1B2956]"><p class="text-xs font-semibold uppercase text-gray-500">Market Share</p><p class="text-2xl font-black text-[#1B2956]">67,83%</p><div class="prog-bar"><div class="prog-fill" style="width:84.8%;background:#1B2956"></div></div><p class="text-xs text-gray-400 mt-1">2 em cada 3 contratos do RS</p></div>
+<div class="bg-white rounded-xl p-5 shadow border-l-4 border-green-500"><p class="text-xs font-semibold uppercase text-gray-500">Contratos Ativos</p><p class="text-2xl font-black text-green-600">14.635</p><p class="text-xs text-gray-400 mt-1">SOM</p></div>
+<div class="bg-white rounded-xl p-5 shadow border-l-4 border-[#1B2956]"><p class="text-xs font-semibold uppercase text-gray-500">Cotas CAGED</p><p class="text-2xl font-black text-[#1B2956]">21.577</p><p class="text-xs text-gray-400 mt-1">SAM</p></div>
+<div class="bg-white rounded-xl p-5 shadow border-l-4 border-orange-500"><p class="text-xs font-semibold uppercase text-gray-500">Alunos Ativos</p><p class="text-2xl font-black text-orange-500">15.705</p><p class="text-xs text-gray-400 mt-1">Base total</p></div>
+<div class="bg-white rounded-xl p-5 shadow border-l-4 border-green-500"><p class="text-xs font-semibold uppercase text-gray-500">Formalização</p><p class="text-2xl font-black text-green-600">93,19%</p><div class="prog-bar"><div class="prog-fill" style="width:93.19%;background:#00A859"></div></div><p class="text-xs text-gray-400 mt-1">Com contrato</p></div>
+<div class="bg-white rounded-xl p-5 shadow border-l-4 border-red-500"><p class="text-xs font-semibold uppercase text-gray-500">Gap de Mercado</p><p class="text-2xl font-black text-red-500">6.942</p><p class="text-xs text-gray-400 mt-1">Cotas não capturadas</p></div>
+</section>
+<section class="bg-gradient-to-r from-[#1B2956] to-[#2E5A88] text-white rounded-xl p-5 flex items-center justify-between flex-wrap gap-4">
+<div class="flex items-center gap-4"><span class="text-3xl font-black opacity-30">01</span><div><p class="text-xs text-blue-200 uppercase font-semibold">Quick Win</p><p class="text-lg font-bold mt-1">1.070 alunos sem contrato = +4,96 p.p. em 30 dias</p></div></div>
+<div class="flex gap-3"><div class="text-center px-4 py-2 bg-white/10 rounded-lg"><p class="text-2xl font-black text-orange-400">1.070</p><p class="text-xs text-blue-200">Formalizar</p></div><div class="text-center px-4 py-2 bg-white/10 rounded-lg"><p class="text-2xl font-black text-green-400">+4,96</p><p class="text-xs text-blue-200">p.p.</p></div><div class="text-center px-4 py-2 bg-white/10 rounded-lg"><p class="text-2xl font-black">30d</p><p class="text-xs text-blue-200">Prazo</p></div></div>
+</section>
+<section>
+<h2 class="text-sm font-bold uppercase text-[#1B2956] border-b-2 border-[#1B2956] pb-2 mb-4">TAM / SAM / SOM</h2>
+<div class="bg-white rounded-xl p-6 shadow">
+<div class="flex flex-col gap-2 items-center">
+<div class="text-white rounded-lg p-4 flex justify-between items-center" style="background:#1B2956;width:100%"><div><p class="text-xs font-semibold uppercase opacity-80">TAM</p><p class="text-xs opacity-60">Cotas obrigatórias do RS</p></div><p class="text-2xl font-black">24.528</p></div>
+<div class="text-white rounded-lg p-4 flex justify-between items-center" style="background:#2E5A88;width:88%"><div><p class="text-xs font-semibold uppercase opacity-80">SAM</p><p class="text-xs opacity-60">Estoque CAGED</p></div><p class="text-2xl font-black">21.577</p></div>
+<div class="text-white rounded-lg p-4 flex justify-between items-center" style="background:#00A859;width:60%"><div><p class="text-xs font-semibold uppercase opacity-80">SOM</p><p class="text-xs opacity-60">Contratos ativos</p></div><p class="text-2xl font-black">14.635</p></div>
+<div class="text-white rounded-lg p-4 flex justify-between items-center" style="background:#E63946;width:29%"><div><p class="text-xs font-semibold uppercase opacity-80">Gap SAM-SOM</p><p class="text-xs opacity-60">Não capturado</p></div><p class="text-2xl font-black">6.942</p></div>
+</div>
+</div>
+</section>
+<section>
+<div class="flex items-center justify-between mb-4 flex-wrap gap-2">
+<h2 class="text-sm font-bold uppercase text-[#1B2956] border-b-2 border-[#1B2956] pb-2">Market Share por Sub-região</h2>
+<div class="flex gap-2" id="filterBtns">
+<button class="px-4 py-2 rounded-lg font-semibold text-sm bg-[#1B2956] text-white" onclick="filterChart('all',this)">Todas</button>
+<button class="px-4 py-2 rounded-lg font-semibold text-sm bg-white text-gray-500 border" onclick="filterChart('lider',this)">Líderes</button>
+<button class="px-4 py-2 rounded-lg font-semibold text-sm bg-white text-gray-500 border" onclick="filterChart('consolidada',this)">Consolidadas</button>
+<button class="px-4 py-2 rounded-lg font-semibold text-sm bg-white text-gray-500 border" onclick="filterChart('desenvolvimento',this)">Desenvolvimento</button>
+<button class="px-4 py-2 rounded-lg font-semibold text-sm bg-white text-gray-500 border" onclick="filterChart('critica',this)">Críticas</button>
+</div>
+</div>
+<div class="bg-white rounded-xl p-6 shadow"><div style="height:450px"><canvas id="regChart"></canvas></div></div>
+</section>
+<section>
+<div class="flex items-center justify-between mb-4 flex-wrap gap-2">
+<h2 class="text-sm font-bold uppercase text-[#1B2956] border-b-2 border-[#1B2956] pb-2">Painel do Gestor</h2>
+<button class="px-4 py-2 rounded-lg font-bold text-sm bg-[#1B2956] text-white flex items-center gap-2" id="dlBtn" onclick="dlPDF()" disabled>
+<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5M16.5 12L12 16.5m0 0L7.5 12m4.5 4.5V3"/></svg>
+Baixar PDF
+</button>
+</div>
+<div class="bg-white rounded-xl p-6 shadow">
+<p class="text-sm text-gray-500 mb-3">Selecione uma sub-região. A última escolha será memorizada.</p>
+<select id="regSel" class="w-full p-3 rounded-lg border-2 border-[#1B2956] font-semibold mb-4" onchange="showDetail(this.value)">
+<option value="">— Selecione sua sub-região —</option>
+<optgroup label="Líderes (≥80%)"><option value="Vale dos Sinos 2">Vale dos Sinos 2 — 95,36%</option><option value="Serra 2">Serra 2 — 93,07%</option><option value="Vale dos Sinos 1">Vale dos Sinos 1 — 83,89%</option><option value="Serra 3">Serra 3 — 83,18%</option><option value="Vale do Taquari 1">Vale do Taquari 1 — 80,42%</option></optgroup>
+<optgroup label="Consolidadas (65-79%)"><option value="Serra 1">Serra 1 — 77,54%</option><option value="Metropolitana 2">Metropolitana 2 — 73,17%</option><option value="Vale dos Sinos 3">Vale dos Sinos 3 — 72,84%</option><option value="Encosta da Serra">Encosta da Serra — 68,47%</option><option value="Sul">Sul — 67,71%</option><option value="Norte 2">Norte 2 — 66,93%</option></optgroup>
+<optgroup label="Em Desenvolvimento (50-64%)"><option value="Noroeste 1">Noroeste 1 — 58,36%</option><option value="Vale do Taquari 2">Vale do Taquari 2 — 57,07%</option><option value="Norte 1">Norte 1 — 56,97%</option><option value="Noroeste 2">Noroeste 2 — 55,43%</option><option value="Vale do Rio Pardo">Vale do Rio Pardo — 55,22%</option><option value="Metropolitana 3">Metropolitana 3 — 50,07%</option></optgroup>
+<optgroup label="Críticas (&lt;50%)"><option value="Metropolitana 1">Metropolitana 1 — 46,92%</option><option value="Centro">Centro — 29,36%</option></optgroup>
+</select>
+<div id="detail"><p class="text-center text-gray-400 py-12">Selecione uma sub-região acima</p></div>
+</div>
+</section>
+<section class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+<div><h2 class="text-sm font-bold uppercase text-[#1B2956] border-b-2 border-[#1B2956] pb-2 mb-4">Pareto — Top 10 Gap</h2><div class="bg-white rounded-xl p-6 shadow"><div style="height:350px"><canvas id="parChart"></canvas></div></div></div>
+<div><h2 class="text-sm font-bold uppercase text-[#1B2956] border-b-2 border-[#1B2956] pb-2 mb-4">Top 5 — Formalização</h2><div class="bg-white rounded-xl p-6 shadow"><div style="height:350px"><canvas id="forChart"></canvas></div></div></div>
+</section>
+<section>
+<h2 class="text-sm font-bold uppercase text-[#1B2956] border-b-2 border-[#1B2956] pb-2 mb-4">Roadmap (67,83% → 80%)</h2>
+<div class="bg-white rounded-xl p-6 shadow">
+<div class="flex items-stretch gap-2 mb-4 flex-wrap">
+<div class="flex-1 text-center p-4 rounded-lg text-white min-w-[120px]" style="background:#E63946"><p class="text-xs uppercase opacity-80 font-semibold">Atual</p><p class="text-3xl font-black mt-1">67,83%</p><p class="text-xs opacity-70">Diagnóstico</p></div>
+<div class="flex items-center text-gray-400 text-xl">→</div>
+<div class="flex-1 text-center p-4 rounded-lg text-white min-w-[120px]" style="background:#F58220"><p class="text-xs uppercase opacity-80 font-semibold">30 dias</p><p class="text-3xl font-black mt-1">72,79%</p><p class="text-xs opacity-70">Formalização</p></div>
+<div class="flex items-center text-gray-400 text-xl">→</div>
+<div class="flex-1 text-center p-4 rounded-lg text-white min-w-[120px]" style="background:#2E5A88"><p class="text-xs uppercase opacity-80 font-semibold">180 dias</p><p class="text-3xl font-black mt-1">75-77%</p><p class="text-xs opacity-70">Captação</p></div>
+<div class="flex items-center text-gray-400 text-xl">→</div>
+<div class="flex-1 text-center p-4 rounded-lg text-white min-w-[120px]" style="background:#00A859"><p class="text-xs uppercase opacity-80 font-semibold">12 meses</p><p class="text-3xl font-black mt-1">80%</p><p class="text-xs opacity-70">Sustentabilidade</p></div>
+</div>
+<div style="height:180px"><canvas id="rmChart"></canvas></div>
+</div>
+</section>
+<section class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+<div><h2 class="text-sm font-bold uppercase text-[#1B2956] border-b-2 border-[#1B2956] pb-2 mb-4">Risco — Concentração (19 Regiões)</h2><div class="bg-white rounded-xl p-6 shadow"><div style="height:450px"><canvas id="rkChart"></canvas></div></div></div>
+<div><h2 class="text-sm font-bold uppercase text-[#1B2956] border-b-2 border-[#1B2956] pb-2 mb-4">3 Alavancas Estratégicas</h2><div class="bg-white rounded-xl p-6 shadow space-y-4">
+<div class="border-l-4 border-orange-500 pl-4 py-2"><p class="font-bold text-[#1B2956]">Alavanca 1 — Formalização <span class="badge b-green ml-2">ROI Imediato</span></p><p class="text-sm text-gray-600 mt-1">Formalizar 1.070 alunos em 30 dias. Ganho de +4,96 p.p.</p></div>
+<div class="border-l-4 border-[#2E5A88] pl-4 py-2"><p class="font-bold text-[#1B2956]">Alavanca 2 — Captação <span class="badge b-blue ml-2">Médio Prazo</span></p><p class="text-sm text-gray-600 mt-1">Recuperação de 5.872 cotas em 60-180 dias.</p></div>
+<div class="border-l-4 border-green-500 pl-4 py-2"><p class="font-bold text-[#1B2956]">Alavanca 3 — Diversificação <span class="badge b-amber ml-2">Sustentabilidade</span></p><p class="text-sm text-gray-600 mt-1">Ampliação da base empresarial em 6 meses.</p></div>
+</div></div>
+</section>
+<section>
+<div class="flex items-center justify-between mb-4 flex-wrap gap-2">
+<h2 class="text-sm font-bold uppercase text-[#1B2956] border-b-2 border-[#1B2956] pb-2">Detalhamento — 19 Sub-regiões</h2>
+<button class="px-4 py-2 rounded-lg font-semibold text-sm border border-green-500 text-green-600 flex items-center gap-2" onclick="expXLS()">
+<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5M16.5 12L12 16.5m0 0L7.5 12m4.5 4.5V3"/></svg>
+Exportar Excel
+</button>
+</div>
+<div class="bg-white rounded-xl p-6 shadow">
+<input type="text" id="search" class="w-full p-2 rounded-lg border border-gray-300 mb-3 text-sm" placeholder="Buscar por nome de sub-região..." oninput="buildTable()">
+<div class="overflow-x-auto">
+<table class="w-full text-sm">
+<thead><tr class="bg-[#1B2956] text-white">
+<th class="p-2 text-left text-xs" onclick="sortT('r')">Rank</th>
+<th class="p-2 text-left text-xs th-sort" onclick="sortT('n')">Sub-região</th>
+<th class="p-2 text-left text-xs th-sort" onclick="sortT('ms')">MS</th>
+<th class="p-2 text-left text-xs" onclick="sortT('f')">Faixa</th>
+<th class="p-2 text-left text-xs th-sort" onclick="sortT('al')">Alunos</th>
+<th class="p-2 text-left text-xs" onclick="sortT('cj')">CNPJs</th>
+<th class="p-2 text-left text-xs th-sort" onclick="sortT('ct')">C/Contr</th>
+<th class="p-2 text-left text-xs th-sort" onclick="sortT('sc')">S/Contr</th>
+<th class="p-2 text-left text-xs th-sort" onclick="sortT('fo')">Formaliz.</th>
+<th class="p-2 text-left text-xs" onclick="sortT('co')">Cotas</th>
+<th class="p-2 text-left text-xs th-sort" onclick="sortT('gp')">Gap</th>
+<th class="p-2 text-left text-xs th-sort" onclick="sortT('cj2')">Al/CNPJ</th>
+<th class="p-2 text-left text-xs" onclick="sortT('ri')">Risco</th>
+</tr></thead>
+<tbody id="tableBody"></tbody>
+</table>
+</div>
+<p class="text-xs text-gray-400 mt-2" id="tCount"></p>
+</div>
+</section>
+<section>
+<h2 class="text-sm font-bold uppercase text-[#1B2956] border-b-2 border-[#1B2956] pb-2 mb-4">Playbook Estratégico</h2>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+<div class="bg-white rounded-xl p-5 shadow border-t-4 border-green-500"><p class="font-bold text-green-600 text-sm uppercase">Proteger e Replicar</p><p class="text-xs text-gray-400 mb-3">Líderes (≥80%) — 5 regiões | MS: 87,18%</p><ul class="text-sm space-y-1 text-gray-700"><li>• Formalizar pendências</li><li>• Diversificar empresas</li><li>• Benchmark permanente</li></ul></div>
+<div class="bg-white rounded-xl p-5 shadow border-t-4 border-[#2E5A88]"><p class="font-bold text-[#2E5A88] text-sm uppercase">Acelerar para Liderança</p><p class="text-xs text-gray-400 mb-3">Consolidadas (65-79%) — 6 regiões | MS: 71,11%</p><ul class="text-sm space-y-1 text-gray-700"><li>• Plano agressivo de expansão</li><li>• Replicar práticas dos líderes</li></ul></div>
+<div class="bg-white rounded-xl p-5 shadow border-t-4 border-amber-500"><p class="font-bold text-amber-600 text-sm uppercase">Expandir e Desenvolver</p><p class="text-xs text-gray-400 mb-3">Em Desenvolvimento (50-64%) — 6 regiões | MS: 55,52%</p><ul class="text-sm space-y-1 text-gray-700"><li>• Expandir novos segmentos</li><li>• Captação intensiva</li></ul></div>
+<div class="bg-white rounded-xl p-5 shadow border-t-4 border-red-500"><p class="font-bold text-red-600 text-sm uppercase">Recuperar Estruturalmente</p><p class="text-xs text-gray-400 mb-3">Críticas (&lt;50%) — 2 regiões | MS: 38,14%</p><ul class="text-sm space-y-1 text-gray-700"><li>• Diagnóstico territorial</li><li>• Reposicionamento comercial</li></ul></div>
+</div>
+</section>
+<footer class="text-center py-6 text-sm text-gray-400"><p class="font-semibold text-[#1B2956]">SENAI RS — Gerência de Educação Profissional e Superior</p><p>Dashboard Market Share CAGED | Q2 2026 | Confidencial</p></footer>
+</main>
+<script>
+var D=[
+{r:1,n:"Vale dos Sinos 2",ms:95.36,f:"lider",al:961,cj:170,ct:699,sc:262,fo:72.74,co:733,gp:34,cj2:4.1,ri:"Baixo"},
+{r:2,n:"Serra 2",ms:93.07,f:"lider",al:861,cj:221,ct:860,sc:1,fo:99.88,co:924,gp:64,cj2:3.9,ri:"Baixo"},
+{r:3,n:"Vale dos Sinos 1",ms:83.89,f:"lider",al:506,cj:132,ct:401,sc:105,fo:79.25,co:478,gp:77,cj2:3.0,ri:"Baixo"},
+{r:4,n:"Serra 3",ms:83.18,f:"lider",al:1403,cj:172,ct:1400,sc:3,fo:99.79,co:1683,gp:283,cj2:8.1,ri:"Médio"},
+{r:5,n:"Vale do Taquari 1",ms:80.42,f:"lider",al:739,cj:93,ct:731,sc:8,fo:98.92,co:909,gp:178,cj2:7.9,ri:"Médio"},
+{r:6,n:"Serra 1",ms:77.54,f:"consolidada",al:2459,cj:393,ct:2220,sc:239,fo:90.28,co:2863,gp:643,cj2:5.7,ri:"Baixo"},
+{r:7,n:"Metropolitana 2",ms:73.17,f:"consolidada",al:888,cj:170,ct:810,sc:78,fo:91.22,co:1107,gp:297,cj2:4.8,ri:"Baixo"},
+{r:8,n:"Vale dos Sinos 3",ms:72.84,f:"consolidada",al:918,cj:146,ct:909,sc:9,fo:99.02,co:1248,gp:339,cj2:6.2,ri:"Baixo"},
+{r:9,n:"Encosta da Serra",ms:68.47,f:"consolidada",al:1188,cj:137,ct:1188,sc:0,fo:100,co:1735,gp:547,cj2:8.7,ri:"Médio"},
+{r:10,n:"Sul",ms:67.71,f:"consolidada",al:639,cj:83,ct:541,sc:98,fo:84.66,co:799,gp:258,cj2:6.5,ri:"Baixo"},
+{r:11,n:"Norte 2",ms:66.93,f:"consolidada",al:679,cj:104,ct:678,sc:1,fo:99.85,co:1013,gp:335,cj2:6.5,ri:"Baixo"},
+{r:12,n:"Noroeste 1",ms:58.36,f:"desenvolvimento",al:515,cj:67,ct:492,sc:23,fo:95.53,co:843,gp:351,cj2:7.3,ri:"Médio"},
+{r:13,n:"Vale do Taquari 2",ms:57.07,f:"desenvolvimento",al:769,cj:108,ct:751,sc:18,fo:97.66,co:1316,gp:565,cj2:7.0,ri:"Baixo"},
+{r:14,n:"Norte 1",ms:56.97,f:"desenvolvimento",al:493,cj:49,ct:482,sc:11,fo:97.77,co:846,gp:364,cj2:9.8,ri:"Alto"},
+{r:15,n:"Noroeste 2",ms:55.43,f:"desenvolvimento",al:664,cj:67,ct:664,sc:0,fo:100,co:1198,gp:534,cj2:9.9,ri:"Alto"},
+{r:16,n:"Vale do Rio Pardo",ms:55.22,f:"desenvolvimento",al:616,cj:83,ct:603,sc:13,fo:97.89,co:1092,gp:489,cj2:7.3,ri:"Médio"},
+{r:17,n:"Metropolitana 3",ms:50.07,f:"desenvolvimento",al:488,cj:86,ct:378,sc:110,fo:77.46,co:755,gp:377,cj2:4.4,ri:"Baixo"},
+{r:18,n:"Metropolitana 1",ms:46.92,f:"critica",al:696,cj:169,ct:616,sc:80,fo:88.51,co:1313,gp:697,cj2:3.6,ri:"Baixo"},
+{r:19,n:"Centro",ms:29.36,f:"critica",al:223,cj:49,ct:212,sc:11,fo:95.07,co:722,gp:510,cj2:4.3,ri:"Baixo"}
+];
+var fC={lider:"#00A859",consolidada:"#2E5A88",desenvolvimento:"#F39C12",critica:"#E63946"};
+var fL={lider:"Líder",consolidada:"Consolidada",desenvolvimento:"Desenvolvimento",critica:"Crítica"};
+var pD=[{r:"Met 1",g:697,a:10},{r:"Serra 1",g:643,a:19},{r:"VT 2",g:565,a:27},{r:"Encosta",g:547,a:35},{r:"Nor 2",g:534,a:43},{r:"Centro",g:510,a:50},{r:"VRP",g:489,a:57},{r:"Met 3",g:377,a:63},{r:"Norte 1",g:364,a:68},{r:"Nor 1",g:351,a:73}];
+var fD=[{r:"VS 2",a:95.36,p:131.11},{r:"Serra 1",a:77.54,p:85.89},{r:"Met 3",a:50.07,p:64.64},{r:"VS 1",a:83.89,p:105.86},{r:"Sul",a:67.71,p:79.97}];
+function showDetail(n){var el=document.getElementById("detail");var b=document.getElementById("dlBtn");if(!n){el.innerHTML='<p class="text-center text-gray-400 py-12">Selecione uma sub-região acima</p>';if(b)b.disabled=true;try{localStorage.removeItem("senai_last");}catch(e){}return;}try{localStorage.setItem("senai_last",n);}catch(e){}if(b)b.disabled=false;var r=D.find(function(d){return d.n===n;});if(!r)return;var fb=r.f==="lider"?"b-green":r.f==="consolidada"?"b-blue":r.f==="desenvolvimento"?"b-amber":"b-red";var rb=r.ri==="Alto"?"b-red":r.ri==="Médio"?"b-amber":"b-green";var est=[];if(r.sc>0)est.push("Formalizar "+r.sc+" alunos sem contrato");if(r.cj2>=7)est.push("Diversificar carteira (CNPJ "+r.cj2.toFixed(1).replace(".",",")+")");est.push("Captação para reduzir gap de "+r.gp+" cotas");est.push("Recuperação de cotas ociosas");var sh=est.map(function(e,i){return "<li>"+(i+1)+". "+e+"</li>";}).join("");var mt=r.ms<50?Math.ceil(r.ms/5)*5+10:Math.min(Math.ceil(r.ms/5)*5,80);el.innerHTML='<div class="mb-4"><h3 class="text-xl font-bold text-[#1B2956]">'+r.n+' <span class="badge '+fb+'">'+fL[r.f]+'</span></h3></div><div class="grid grid-cols-3 md:grid-cols-6 gap-2 mb-4">'+mini(r.ms.toFixed(2).replace(".",",")+"%","MS",fC[r.f])+mini(r.al,"Alunos","#1B2956")+mini(r.ct,"C/Contr","#00A859")+mini(r.sc,"S/Contr","#F58220")+mini(r.gp,"Gap","#E63946")+mini(r.cj2.toFixed(1).replace(".",","),"Al/CNPJ","#1B2956")+'</div><div class="dcard dcard-blue"><h4 class="text-xs font-bold uppercase text-[#2E5A88] mb-2">Insight</h4><p class="text-sm">MS de '+r.ms.toFixed(2).replace(".",",")+"% com "+r.fo.toFixed(2).replace(".",",")+"% de formalização. "+(r.sc>0?r.sc+" alunos sem contrato. ":"")+"CNPJ de "+r.cj2.toFixed(1).replace(".",",")+" ("+r.ri.toLowerCase()+"). Gap de "+r.gp+" cotas.</p></div><div class="dcard dcard-green"><h4 class="text-xs font-bold uppercase text-green-600 mb-2">Estratégias</h4><ul class="text-sm list-disc pl-5">'+sh+'</ul></div><div class="dcard '+(r.ri==="Alto"?"dcard-red":r.ri==="Médio"?"dcard-amber":"dcard-green")+'"><h4 class="text-xs font-bold uppercase mb-2">Risco: <span class="badge '+rb+'">'+r.ri+'</span></h4><p class="text-sm">'+r.al+" alunos em "+r.cj+" empresas. "+r.cj2.toFixed(1).replace(".",",")+" alunos por CNPJ.</p></div><div class="mt-3 text-sm"><strong>Responsável:</strong> Gestão da Sub-região | <strong>Meta:</strong> >= "+mt+"% MS"+(r.cj2>=7?" + CNPJ < 7":"")+'</div>';}
+function mini(v,l,c){return '<div class="mini"><p class="mini-v" style="color:'+c+'">'+v+'</p><p class="mini-l">'+l+'</p></div>';}
+var tSS={col:"r",dir:"asc"};
+function sortT(c){if(tSS.col===c){tSS.dir=tSS.dir==="asc"?"desc":"asc";}else{tSS.col=c;tSS.dir="asc";}buildTable();}
+function getFD(){var el=document.getElementById("search");var t=el?el.value.toLowerCase().trim():"";var f=D.filter(function(r){return !t||r.n.toLowerCase().indexOf(t)!==-1;});var c=tSS.col,d=tSS.dir==="asc"?1:-1;f.sort(function(a,b){var va=a[c],vb=b[c];if(typeof va==="string")return va.localeCompare(vb)*d;return(va-vb)*d;});return f;}
+function buildTable(){var tb=document.getElementById("tableBody");if(!tb)return;var data=getFD();tb.innerHTML=data.map(function(r){var rb=r.ri==="Alto"?"b-red":r.ri==="Médio"?"b-amber":"b-green";var fb=r.f==="lider"?"b-green":r.f==="consolidada"?"b-blue":r.f==="desenvolvimento"?"b-amber":"b-red";var sc=r.sc>0?'<span class="text-orange-500 font-semibold">'+r.sc+"</span>":"—";return '<tr class="border-b hover:bg-gray-50"><td class="p-2 font-bold text-gray-400">'+r.r+'</td><td class="p-2 font-semibold">'+r.n+'</td><td class="p-2 font-bold" style="color:'+fC[r.f]+'">'+r.ms.toFixed(2).replace(".",",")+'%</td><td class="p-2"><span class="badge '+fb+'">'+fL[r.f]+'</span></td><td class="p-2">'+r.al.toLocaleString("pt-BR")+'</td><td class="p-2">'+r.cj+'</td><td class="p-2">'+r.ct.toLocaleString("pt-BR")+'</td><td class="p-2">'+sc+'</td><td class="p-2">'+r.fo.toFixed(2).replace(".",",")+'%</td><td class="p-2">'+r.co.toLocaleString("pt-BR")+'</td><td class="p-2 font-semibold text-red-500">'+r.gp.toLocaleString("pt-BR")+'</td><td class="p-2">'+r.cj2.toFixed(1).replace(".",",")+'</td><td class="p-2"><span class="badge '+rb+'">'+r.ri+"</span></td></tr>";}).join("");var ce=document.getElementById("tCount");if(ce)ce.textContent="Exibindo "+data.length+" de "+D.length+" sub-regiões";}
+function expXLS(){if(typeof XLSX==="undefined"){alert("Biblioteca não carregou.");return;}var data=getFD();var ed=data.map(function(r){return{"Ranking":r.r,"Sub-região":r.n,"Market Share (%)":r.ms,"Faixa":fL[r.f],"Alunos":r.al,"CNPJs":r.cj,"Com Contrato":r.ct,"Sem Contrato":r.sc,"Formalização (%)":r.fo,"Cotas CAGED":r.co,"Gap":r.gp,"Alunos/CNPJ":r.cj2,"Risco":r.ri};});var ws=XLSX.utils.json_to_sheet(ed);ws["!cols"]=[{wch:8},{wch:28},{wch:18},{wch:16},{wch:10},{wch:8},{wch:12},{wch:12},{wch:14},{wch:12},{wch:8},{wch:12},{wch:10}];var wb=XLSX.utils.book_new();XLSX.utils.book_append_sheet(wb,ws,"Market Share CAGED");XLSX.writeFile(wb,"SENAI-RS_MarketShare_CAGED_Q2-2026.xlsx");}
+function dlPDF(){var n=document.getElementById("regSel").value;if(!n)return;var r=D.find(function(d){return d.n===n;});if(!r)return;var b=document.getElementById("dlBtn");var ot=b.innerHTML;b.innerHTML="Gerando...";b.disabled=true;try{var JC=window.jspdf?window.jspdf.jsPDF:window.jsPDF;if(!JC)throw new Error("jsPDF");var doc=new JC({unit:"mm",format:"a4",orientation:"portrait"});var pW=doc.internal.pageSize.getWidth(),pH=doc.internal.pageSize.getHeight(),mg=12,cW=pW-mg*2,y=mg;function hx(h){var m=/^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(h);return m?[parseInt(m[1],16),parseInt(m[2],16),parseInt(m[3],16)]:[0,0,0];}function sf(h){var c=hx(h);doc.setFillColor(c[0],c[1],c[2]);}function st(h){var c=hx(h);doc.setTextColor(c[0],c[1],c[2]);}function sd(h){var c=hx(h);doc.setDrawColor(c[0],c[1],c[2]);}function pb(n2){if(y+n2>pH-mg-10){doc.addPage();y=mg;return true;}return false;}function sz(t){return t.replace(/≥/g,">=").replace(/≤/g,"<=").replace(/→/g,"->").replace(/—/g,"-").replace(/º/g,"o");}function sp(t,w,fs){doc.setFont("helvetica","normal");doc.setFontSize(fs);return doc.splitTextToSize(sz(t),w);}function wl(l,x,sy,lh){var cy=sy;for(var i=0;i<l.length;i++){doc.text(l[i],x,cy);cy+=lh;}return cy;}var C={navy:"#1B2956",nl:"#2E5A88",or:"#F58220",gr:"#00A859",rd:"#E63946",am:"#F39C12",gy:"#6C757D",lg:"#E2E8F0",bB:"#EFF6FF",bG:"#F0FDF4",bA:"#FFFBEB",bR:"#FEF2F2",dk:"#374151"};var logoImg=document.getElementById("logoImg");var la=false;if(logoImg&&logoImg.complete&&logoImg.naturalWidth>0){try{var cv=document.createElement("canvas");cv.width=logoImg.naturalWidth;cv.height=logoImg.naturalHeight;var ctx=cv.getContext("2d");ctx.drawImage(logoImg,0,0);var id=ctx.getImageData(0,0,cv.width,cv.height);var dt=id.data;for(var i=0;i<dt.length;i+=4){if(dt[i]<30&&dt[i+1]<30&&dt[i+2]<30)dt[i+3]=0;}ctx.putImageData(id,0,0);doc.addImage(cv.toDataURL("image/png"),"PNG",mg,y,38,14);la=true;}catch(e){}}if(!la){sf(C.or);doc.roundedRect(mg,y,12,12,2,2,"F");st("#FFFFFF");doc.setFont("helvetica","bold");doc.setFontSize(16);doc.text("S",mg+4.5,y+8.5);}var tx=la?mg+42:mg+16;st(C.navy);doc.setFont("helvetica","bold");doc.setFontSize(15);doc.text(sz("SENAI RS - Relatorio Regional"),tx,y+5);st(C.gy);doc.setFont("helvetica","normal");doc.setFontSize(9);doc.text("Market Share CAGED | Q2 2026",tx,y+10);sd(C.navy);doc.setLineWidth(0.8);doc.line(mg,y+17,pW-mg,y+17);y+=22;st(C.navy);doc.setFont("helvetica","bold");doc.setFontSize(18);doc.text(r.n,mg,y);y+=8;var m1=[{v:r.ms.toFixed(2).replace(".",",")+"%",l:"MS",c:fC[r.f]},{v:String(r.al),l:"Alunos",c:C.navy},{v:String(r.ct),l:"C/Contr",c:C.gr},{v:String(r.sc),l:"S/Contr",c:C.or},{v:String(r.gp),l:"Gap",c:C.rd},{v:r.cj2.toFixed(1).replace(".",","),l:"Al/CNPJ",c:C.navy}];var mw=(cW-10)/6;for(var i=0;i<m1.length;i++){var mx=mg+i*(mw+2);sf("#FFFFFF");sd(C.lg);doc.setLineWidth(0.3);doc.roundedRect(mx,y,mw,16,1.5,1.5,"F");st(m1[i].c);doc.setFont("helvetica","bold");doc.setFontSize(12);doc.text(m1[i].v,mx+2,y+7);st(C.gy);doc.setFont("helvetica","normal");doc.setFontSize(6);doc.text(m1[i].l,mx+2,y+12);}y+=22;var ins="MS de "+r.ms.toFixed(2).replace(".",",")+"% com "+r.fo.toFixed(2).replace(".",",")+"% de formalizacao. "+(r.sc>0?r.sc+" alunos sem contrato. ":"")+"CNPJ "+r.cj2.toFixed(1).replace(".",",")+" ("+r.ri.toLowerCase()+"). Gap "+r.gp+" cotas.";var il=sp(ins,cW-10,9);var lh=4.8,ch=Math.max(il.length*lh+14,30);pb(ch+4);sf(C.bB);doc.roundedRect(mg,y,cW,ch,2,2,"F");sf(C.nl);doc.rect(mg,y,1.5,ch,"F");st(C.nl);doc.setFont("helvetica","bold");doc.setFontSize(8);doc.text("INSIGHT",mg+5,y+6);st(C.dk);doc.setFont("helvetica","normal");doc.setFontSize(9);wl(il,mg+5,y+12,lh);y+=ch+4;var est=[];if(r.sc>0)est.push("Formalizar "+r.sc+" alunos");if(r.cj2>=7)est.push("Diversificar (CNPJ "+r.cj2.toFixed(1).replace(".",",")+")");est.push("Captacao gap "+r.gp);est.push("Recuperar cotas ociosas");var si=est.map(function(e){return sp(e,cW-14,9);});var sh2=14;for(var s2=0;s2<si.length;s2++)sh2+=si[s2].length*lh+3;pb(sh2+4);sf(C.bG);doc.roundedRect(mg,y,cW,sh2,2,2,"F");sf(C.gr);doc.rect(mg,y,1.5,sh2,"F");st(C.gr);doc.setFont("helvetica","bold");doc.setFontSize(8);doc.text("ESTRATEGIAS",mg+5,y+6);st(C.dk);doc.setFont("helvetica","normal");doc.setFontSize(9);var sY=y+12;for(var s3=0;s3<si.length;s3++){doc.setFont("helvetica","bold");doc.text((s3+1)+".",mg+5,sY);doc.setFont("helvetica","normal");sY=wl(si[s3],mg+9,sY,lh);sY+=3;}y+=sh2+4;var rb2=r.ri==="Alto"?C.bR:r.ri==="Médio"?C.bA:C.bG,rd2=r.ri==="Alto"?C.rd:r.ri==="Médio"?C.am:C.gr;var ri="Risco: "+r.ri+" - "+r.cj2.toFixed(1).replace(".",",")+" alunos/CNPJ ("+r.cj+" empresas)";var ril=sp(ri,cW-10,9);var rh=ril.length*lh+14;pb(rh+4);sf(rb2);doc.roundedRect(mg,y,cW,rh,2,2,"F");sf(rd2);doc.rect(mg,y,1.5,rh,"F");st(rd2);doc.setFont("helvetica","bold");doc.setFontSize(8);doc.text("ANALISE DE RISCO",mg+5,y+6);st(C.dk);doc.setFont("helvetica","normal");doc.setFontSize(9);wl(ril,mg+5,y+12,lh);y+=rh+4;pb(15);sd(C.lg);doc.setLineWidth(0.3);doc.line(mg,y,pW-mg,y);y+=5;st(C.gy);doc.setFontSize(7);doc.text("SENAI RS | Dashboard Market Share CAGED | Q2 2026",pW/2,y,{align:"center"});doc.save("SENAI-RS_"+n.replace(/\s+/g,"_")+".pdf");b.innerHTML=ot;b.disabled=false;}catch(err){console.error(err);b.innerHTML="Erro";b.disabled=false;setTimeout(function(){b.innerHTML=ot;},3000);}}
+var regChart;
+function filterChart(f,b){document.querySelectorAll("#filterBtns button").forEach(function(x){x.className="px-4 py-2 rounded-lg font-semibold text-sm bg-white text-gray-500 border";});if(b)b.className="px-4 py-2 rounded-lg font-semibold text-sm bg-[#1B2956] text-white";var data=f==="all"?D:D.filter(function(r){return r.f===f;});var sorted=data.slice().sort(function(a,b){return b.ms-a.ms;});if(regChart)regChart.destroy();regChart=new Chart(document.getElementById("regChart").getContext("2d"),{type:"bar",data:{labels:sorted.map(function(r){return r.n;}),datasets:[{label:"MS CAGED (%)",data:sorted.map(function(r){return r.ms;}),backgroundColor:sorted.map(function(r){return fC[r.f];}),borderRadius:4},{label:"Meta 80%",data:sorted.map(function(){return 80;}),type:"line",borderColor:"#E63946",borderWidth:2,borderDash:[5,3],pointRadius:0,fill:false}]},options:{indexAxis:"y",responsive:true,maintainAspectRatio:false,scales:{x:{beginAtZero:true,max:100,ticks:{callback:function(v){return v+"%";}}}}}});}
+function init(){
+buildTable();
+filterChart("all",document.querySelector("#filterBtns button"));
+new Chart(document.getElementById("parChart").getContext("2d"),{type:"bar",data:{labels:pD.map(function(d){return d.r;}),datasets:[{label:"Gap",data:pD.map(function(d){return d.g;}),backgroundColor:"#1B2956",borderRadius:4},{label:"% Acum",data:pD.map(function(d){return d.a;}),type:"line",borderColor:"#E63946",borderWidth:2,pointRadius:3,fill:false}]},options:{responsive:true,maintainAspectRatio:false}});
+new Chart(document.getElementById("forChart").getContext("2d"),{type:"bar",data:{labels:fD.map(function(d){return d.r;}),datasets:[{label:"MS Atual",data:fD.map(function(d){return d.a;}),backgroundColor:"#2E5A88",borderRadius:4},{label:"MS Pós-Form.",data:fD.map(function(d){return d.p;}),backgroundColor:"#00A859",borderRadius:4}]},options:{responsive:true,maintainAspectRatio:false,scales:{y:{beginAtZero:true,ticks:{callback:function(v){return v+"%";}}}}}});
+new Chart(document.getElementById("rmChart").getContext("2d"),{type:"line",data:{labels:["Atual","H1 30d","H2 180d","H3 12m"],datasets:[{label:"MS Projetado",data:[67.83,72.79,76,80],borderColor:"#00A859",backgroundColor:"rgba(0,168,89,0.1)",borderWidth:3,fill:true,tension:0.3,pointRadius:5,pointBackgroundColor:["#E63946","#F58220","#2E5A88","#00A859"]},{label:"Meta 80%",data:[80,80,80,80],borderColor:"#E63946",borderWidth:2,borderDash:[5,3],pointRadius:0,fill:false}]},options:{responsive:true,maintainAspectRatio:false,scales:{y:{min:60,max:85,ticks:{callback:function(v){return v+"%";}}}}}});
+var rD=D.map(function(r){return{r:r.n,c:r.cj2,ri:r.ri};}).sort(function(a,b){return b.c-a.c;});
+new Chart(document.getElementById("rkChart").getContext("2d"),{type:"bar",data:{labels:rD.map(function(d){return d.r;}),datasets:[{label:"Alunos/CNPJ",data:rD.map(function(d){return d.c;}),backgroundColor:rD.map(function(d){return d.ri==="Alto"?"#E63946":d.ri==="Médio"?"#F39C12":"#00A859";}),borderRadius:4},{label:"Meta 7",data:rD.map(function(){return 7;}),type:"line",borderColor:"#1B2956",borderWidth:2,borderDash:[5,3],pointRadius:0,fill:false}]},options:{indexAxis:"y",responsive:true,maintainAspectRatio:false,scales:{x:{beginAtZero:true,max:12}}}});
+try{var lr=localStorage.getItem("senai_last");if(lr){var sel=document.getElementById("regSel");var opt=Array.prototype.find.call(sel.options,function(o){return o.value===lr;});if(opt){sel.value=lr;showDetail(lr);}}}catch(e){}
+}
+if(document.readyState==="loading"){document.addEventListener("DOMContentLoaded",init);}else{init();}
+</script>
+</body>
+</html>
